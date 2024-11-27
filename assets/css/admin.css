@@ -1,0 +1,109 @@
+.app-content-header .button-item {
+	width: 31px;
+	height: 31px;
+	line-height: 31px;
+	display: inline-block;
+	border-radius: 3px;
+	text-align: center;
+}
+.app-content-header .button-add {
+	position: relative;
+	top: 1px;
+	left: 10px;
+	background-color: #ffffff;
+	border: 1px solid #0d6efd;
+	color: #0d6efd;
+}
+.app-content-header .button-add:hover {
+	background-color: #0d6efd;
+	color: #ffffff;
+}
+.app-content-header .button-list {
+	position: relative;
+	top: 1px;
+	left: 10px;
+	background-color: #ffffff;
+	border: 1px solid #d2d2d2;
+	color: #d2d2d2;
+}
+.app-content-header .button-list:hover {
+	background-color: #d2d2d2;
+	color: #ffffff;
+}
+
+.sidebar-account {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 3.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	background: #343a40;
+	border-top: 1px solid #495057;
+	color: #bbbdbf;
+}
+.sidebar-account .sidebar-account-wrapper {
+	position: relative;
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar-account .link-account,
+.sidebar-account .link-logout {
+	position: absolute;
+	bottom: 0;
+	width: 50px;
+	height: 3.5rem;
+}
+.sidebar-account .link-account {
+	left: 0;
+}
+.sidebar-account .link-logout {
+	right: 0;
+}
+.sidebar-account .link-account i,
+.sidebar-account .link-logout i {
+	position: relative;
+    top: 16px;
+    left: 0;
+}
+
+.sidebar-wrapper {
+	margin-bottom: 3.5rem;
+}
+
+.app-sidebar .sidebar-brand a {
+	color: #dbdbdb;
+	font-size: 26px;
+	opacity: 0.7;
+}
+
+.app-sidebar .sidebar-brand a span span {
+	opacity: 0.7;
+}
+
+.app-footer {
+	text-align: center;
+}
+
+.app-footer a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.app-footer a:hover {
+	color: black;
+}
+
+@media ( min-width : 992px) {
+	.sidebar-expand-lg.layout-fixed .app-sidebar .sidebar-wrapper {
+		height: calc(100vh - ( calc(7rem + 2px)));
+	}
+}
