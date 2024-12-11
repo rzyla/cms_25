@@ -1,7 +1,7 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
 	<div class="sidebar-brand">
-		<a href="<?php echo $admin->route->list(""); ?>" class="brand-link">
-			<span class="brand-text fw-light"><?php echo $admin->language->translate("common_arteh_upper"); ?><span><?php echo $admin->language->translate("common_cms_upper"); ?></span></span>
+		<a href="<?php echo $provider->route->index(consts::$page_dashboard); ?>" class="brand-link">
+			<span class="brand-text fw-light"><?php echo $provider->language->translate("common_arteh_upper"); ?><span><?php echo $provider->language->translate("common_cms_upper"); ?></span></span>
 		</a>
 	</div>
 	<div class="sidebar-wrapper">
@@ -289,35 +289,35 @@
 						<p>Level 1</p>
 				</a></li>
 				
-				<li class="nav-header"><?php echo $admin->language->translate("sidebar_administration_upper"); ?></li>
+				<li class="nav-header"><?php echo $provider->language->translate("sidebar_administration_upper"); ?></li>
 				<li class="nav-item">
-					<a href="<?php echo $admin->route->list("menu"); ?>" class="nav-link">
+					<a href="<?php echo $provider->route->index("menu"); ?>" class="nav-link">
 						<i class="bi bi-person-fill-gear"></i>
-						<p><?php echo $admin->language->translate("sidebar_menu"); ?></p>
+						<p><?php echo $provider->language->translate("sidebar_menu"); ?></p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo $admin->route->list("partials"); ?>" class="nav-link">
+					<a href="<?php echo $provider->route->index("partials"); ?>" class="nav-link">
 						<i class="bi bi-person-fill-gear"></i>
-						<p><?php echo $admin->language->translate("sidebar_partials"); ?></p>
+						<p><?php echo $provider->language->translate("sidebar_partials"); ?></p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo $admin->route->list("configuration"); ?>" class="nav-link">
+					<a href="<?php echo $provider->route->index("configuration"); ?>" class="nav-link">
 						<i class="bi bi-person-fill-gear"></i>
-						<p><?php echo $admin->language->translate("sidebar_configuration"); ?></p>
+						<p><?php echo $provider->language->translate("sidebar_configuration"); ?></p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo $admin->route->list("users"); ?>" class="nav-link">
+					<a href="<?php echo $provider->route->index("users"); ?>" class="nav-link">
 						<i class="bi bi-person-fill-gear"></i>
-						<p><?php echo $admin->language->translate("sidebar_users"); ?></p>
+						<p><?php echo $provider->language->translate("sidebar_users"); ?></p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo $admin->route->list("modules"); ?>" class="nav-link">
+					<a href="<?php echo $provider->route->index("modules"); ?>" class="nav-link">
 						<i class="bi bi-person-fill-gear"></i>
-						<p><?php echo $admin->language->translate("sidebar_modules"); ?></p>
+						<p><?php echo $provider->language->translate("sidebar_modules"); ?></p>
 					</a>
 				</li>
 			</ul>
@@ -325,9 +325,9 @@
 	</div>
 	<div class="sidebar-account">
 		<div class="sidebar-account-wrapper">
-    		<a href="<?php echo $admin->route->list("account"); ?>" title="<?php echo $admin->language->translate("sidebar_account"); ?>" class="link-account"><i class="bi bi-person-bounding-box"></i></a>
-    		<span><?php echo $admin->user->name(); ?></span>
-    		<a href="<?php echo $admin->route->route("logout"); ?>" title="<?php echo $admin->language->translate("sidebar_logout"); ?>" class="link-logout"><i class="bi bi-box-arrow-right"></i></a>
+    		<a href="<?php echo $provider->route->index("account"); ?>" title="<?php echo $provider->language->translate("sidebar_account"); ?>" class="link-account"><i class="bi bi-person-bounding-box"></i></a>
+    		<span><?php echo $provider->user->name; ?></span>
+    		<a href="<?php echo $provider->route->route("logout"); ?>" title="<?php echo $provider->language->translate("sidebar_logout"); ?>" class="link-logout"><i class="bi bi-box-arrow-right"></i></a>
 		</div>
 	</div>
 </aside>

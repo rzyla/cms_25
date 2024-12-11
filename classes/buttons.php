@@ -11,6 +11,13 @@ class buttons
         $this->list = $list;
     }
     
+    public function __get($key)
+    {
+        if (isset($this->$key)) {
+            return $this->$key;
+        }
+    }
+    
     public function add()
     {
         $this->add = true;
@@ -19,16 +26,6 @@ class buttons
     public function list()
     {
         $this->list = true;
-    }
-    
-    public function showAdd()
-    {
-        return $this->add;
-    }
-    
-    public function showList()
-    {
-        return $this->list;
     }
 }
 

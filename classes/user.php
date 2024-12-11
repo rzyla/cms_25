@@ -2,6 +2,8 @@
 
 class user
 {
+    private int $acl;
+    private int $id;
     private string $name;
     
     function __construct()
@@ -9,14 +11,18 @@ class user
         $this->init();
     }
     
-    private function init()
+    public function __get($key)
     {
-        $this->name = "Radosław Żyła";
+        if (isset($this->$key)) {
+            return $this->$key;
+        }
     }
     
-    public function name() : string 
+    private function init()
     {
-        return $this->name;
+        $this->acl = 9;
+        $this->id = 1;
+        $this->name = "Radosław Żyła";
     }
 }
 

@@ -10,9 +10,9 @@
         <link rel="stylesheet" href="/vendor/admin-lte/css/adminlte.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css" integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css" integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous">
-        <link rel="stylesheet" href="/assets/css/<?php echo $admin->variables->provider(); ?>.css">
+        <link rel="stylesheet" href="/assets/css/<?php echo $provider->variables->provider ?>.css">
         
-        <title><?php echo $admin->language->translate("common_arteh_upper"); ?> <?php echo $admin->language->translate("common_cms_upper"); ?></title>
+        <title><?php echo $provider->language->translate("common_arteh_upper"); ?> <?php echo $provider->language->translate("common_cms_upper"); ?></title>
     </head>
     <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
    		<div class="app-wrapper">

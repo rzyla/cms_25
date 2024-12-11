@@ -71,6 +71,13 @@ class config
         }
     }
     
+    public function __get($key)
+    {
+        if (isset($this->$key)) {
+            return $this->$key;
+        }
+    }
+    
     private function get_env_path()
     {
         return $this->path  . ".env";
@@ -81,76 +88,6 @@ class config
         if ($key == $explode_key) {
             $variable = preg_replace('/\s+/', '', $explode_variable);
         }
-    }
-
-    public function path()
-    {
-        return $this->path;
-    }
-    
-    public function app_path()
-    {
-        return $this->app_path;
-    }
-
-    public function app_admin_path()
-    {
-        return $this->app_admin_path;
-    }
-
-    public function app_url()
-    {
-        return $this->app_url;
-    }
-
-    public function app_salt()
-    {
-        return $this->app_salt;
-    }
-
-    public function error_reporting()
-    {
-        return $this->error_reporting;
-    }
-
-    public function db_host()
-    {
-        return $this->db_host;
-    }
-
-    public function db_port()
-    {
-        return $this->db_port;
-    }
-
-    public function db_database()
-    {
-        return $this->db_database;
-    }
-
-    public function db_username()
-    {
-        return $this->db_username;
-    }
-
-    public function db_password()
-    {
-        return $this->db_password;
-    }
-
-    public function db_prefx()
-    {
-        return $this->db_prefx;
-    }
-
-    public function default_language()
-    {
-        return $this->default_language;
-    }
-
-    public function default_language_admin()
-    {
-        return $this->default_language_admin;
     }
 }
 

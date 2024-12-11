@@ -1,3 +1,7 @@
+.text-right {
+	text-align: right;
+}
+
 .app-content-header .button-item {
 	width: 31px;
 	height: 31px;
@@ -106,4 +110,24 @@
 	.sidebar-expand-lg.layout-fixed .app-sidebar .sidebar-wrapper {
 		height: calc(100vh - ( calc(7rem + 2px)));
 	}
+}
+
+#error_page_404 {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+#error_page_404 .error_page_title { 
+	font-size: 240px;
+	line-height: 200px;
+}
+#error_page_404 .error_page_description span {
+	border-top: 1px solid #cccccc;
+	display: inline-block;
+	padding-top: 10px;
 }

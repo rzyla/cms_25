@@ -8,7 +8,7 @@ class bootstrap
         {
             $explode = explode(consts::$slash, $_GET[consts::$url]);
             
-            if($explode[0] == consts::$admin)
+            if($explode[0] == consts::$provider_admin)
             {
                 require_once 'bootstrap/admin.php';
             }

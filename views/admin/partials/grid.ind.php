@@ -3,54 +3,52 @@
 		<div class="card">
 			<div class="card-body">
                <table class="table table-bordered">
-               		<?php if(!empty($app['grid']['headers'])): ?>
+               		<?php if(count($provider->grid->headers) > 0): ?>
                     	<thead>
 							<tr>
-								<?php foreach($app['grid']['headers'] as $header): ?>
+								<?php foreach($provider->grid->headers as $header): ?>
 									<th><?php echo $header; ?></th>
                                 <?php endforeach; ?>
-                                <?php if(!empty($app['grid']['position'])): ?>
+                                <?php if($provider->grid->position == true): ?>
                                 	<th></th>
                                 <?php endif; ?>
-                                <?php if(!empty($app['grid']['edit']) || !empty($app['grid']['delete']) || !empty($app['grid']['active'])): ?>
+                                <?php if($provider->grid->edit == true || $provider->grid->delete == true || $provider->grid->active == true): ?>
                                 	<th></th>
                                 <?php endif; ?>
                         	</tr>
                     	</thead>
                     <?php endif; ?>
-                    <?php if(!empty($app['grid']['items'])): ?>
+                    <?php if(count($provider->grid->items) > 0): ?>
 						<tbody>
-							<?php if(!empty($app['grid']['items'])): ?>
-								<?php foreach($app['grid']['items'] as $item): ?>
-									<tr class="align-middle">
-										<?php foreach($app['grid']['fields'] as $field): ?>
-                                			<td><?php echo $item[$field]; ?></td>
-                                		<?php endforeach; ?>
-                                		<?php if(!empty($app['grid']['position'])): ?>
-                                			<td></td>
-                                		<?php endif; ?>
-                                		<?php if(!empty($app['grid']['edit']) || !empty($app['grid']['delete']) || !empty($app['grid']['active'])): ?>
-                                			<td>
-                                				<?php if(!empty($app['grid']['active'])): ?>
-                                					<?php if(array_key_exists('active', $item)): ?>
-                                						<?php if(!empty($item['active'])): ?>
-                                							<a href="<?php echo $app['page']; ?>"><?php echo $lang['common_active'] ?></a>
-                                						<?php else: ?>
-                                							<a href=""><?php echo $lang['common_deactive'] ?></a>
-                                						<?php endif; ?>
+							<?php foreach($provider->grid->items as $item): ?>
+								<tr class="align-middle">
+									<?php foreach($provider->grid->fields as $field): ?>
+                                		<td><?php echo $item[$field]; ?></td>
+                                	<?php endforeach; ?>
+                                	<?php if($provider->grid->position == true): ?>
+                                		<td></td>
+                                	<?php endif; ?>
+                                	<?php if($provider->grid->edit == true || $provider->grid->delete == true || $provider->grid->active == true): ?>
+                                		<td>
+                                			<?php if($provider->grid->active == true): ?>
+                                				<?php if(array_key_exists(consts::$fields_active, $item)): ?>
+                                					<?php if($item[consts::$fields_active] == consts::$value_activate): ?>
+                                						<a href="<?php echo $provider->route->deactivate($provider->variables->page, $item[consts::$fields_id]); ?>"><?php echo $provider->language->translate('common_button_deactivate'); ?></a>
+                                					<?php else: ?>
+                                						<a href="<?php echo $provider->route->activate($provider->variables->page, $item[consts::$fields_id]); ?>"><?php echo $provider->language->translate('common_button_activate'); ?></a>
                                 					<?php endif; ?>
                                 				<?php endif; ?>
-                                				<?php if(!empty($app['grid']['edit'])): ?>
-                                					<a href=""><?php echo $lang['common_edit'] ?></a>
-                                				<?php endif; ?>
-                                				<?php if(!empty($app['grid']['delete'])): ?>
-                                					<a href=""><?php echo $lang['common_delete'] ?></a>
-                                				<?php endif; ?>
-                                			</td>
-                                		<?php endif; ?>
-									</tr>
-								<?php endforeach; ?>
-							<?php endif; ?>
+                                			<?php endif; ?>
+                                			<?php if($provider->grid->edit == true): ?>
+                                				<a href="<?php echo $provider->route->edit($provider->variables->page, $item[consts::$fields_id]); ?>"><?php echo $provider->language->translate('common_button_edit') ?></a>
+                                			<?php endif; ?>
+                                			<?php if($provider->grid->delete == true): ?>
+                                				<a href="<?php echo $provider->route->delete($provider->variables->page, $item[consts::$fields_id]); ?>"><?php echo $provider->language->translate('common_button_delete') ?></a>
+                                			<?php endif; ?>
+                                		</td>
+                                	<?php endif; ?>
+								</tr>
+							<?php endforeach; ?>
 						</tbody>
 					<?php endif; ?>
             	</table>

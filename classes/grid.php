@@ -9,20 +9,29 @@ class grid
 
     private array $items = [];
 
-    private bool $add = false;
+    private bool $add;
 
     private bool $edit;
 
     private bool $delete;
 
     private bool $position;
+    private bool $active;
 
-    function __construct(bool $edit = false, bool $delete = false, bool $position = false, bool $ative = false)
+    function __construct(bool $add = false, bool $edit = false, bool $delete = false, bool $position = false, bool $active = false)
     {
+        $this->add = $add;
         $this->edit = $edit;
         $this->delete = $delete;
         $this->position = $position;
-        $this->ative = $ative;
+        $this->active = $active;
+    }
+
+    public function __get($key)
+    {
+        if (isset($this->$key)) {
+            return $this->$key;
+        }
     }
 
     public function field(string $field)
@@ -69,6 +78,19 @@ class grid
         if (! empty($items)) {
             foreach ($items as $item) {
                 $this->item($item);
+            }
+        }
+    }
+
+    public function translate(language $language, string $field, string $prefix)
+    {
+        if (! empty($field) && ! empty($this->items)) {
+            foreach ($this->items as &$item) {
+                $translate = $language->translate($prefix . $item[$field]);
+
+                if (! empty($translate)) {
+                    $item[$field] = $translate;
+                }
             }
         }
     }

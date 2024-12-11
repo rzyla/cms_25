@@ -3,6 +3,7 @@
 class language
 {
     private string $current = "";
+    private string $provider = "";
     private array $translate = [];
     
     function __construct(string $default, string $provider)
