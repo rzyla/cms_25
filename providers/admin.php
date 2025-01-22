@@ -25,22 +25,28 @@ class admin
 
     public $variables;
 
+    public $security;
+    
+    public $menu;
+
     function __construct($path)
     {
         $this->config = new config($path);
 
         $this->init_error_reporting($this->config->error_reporting);
 
-        $this->language = new language($this->config->default_language_admin, consts::$provider_admin);
         $this->database = new database($this->config);
         $this->route = new route($this->config->app_admin_path);
-        $this->user = new user();
-        $this->buttons = new buttons();
+        $this->user = new user($this->database);
         $this->variables = new variables($this->config, consts::$provider_admin);
-        $this->grid = new grid();
-        $this->layout = new layout();
         $this->message = new message();
-        $this->dictionary = new dictionary($this->language);
+        $this->language = new language($this->config->default_language_admin, consts::$provider_admin);
+        $this->security = new security($this->config, $this->route, $this->user, $this->variables, $this->message, $this->language);
+        $this->buttons = new buttons($this->route, $this->variables);
+        $this->grid = new grid();
+        $this->dictionary = new dictionary($this->language, $this->database);
+        $this->layout = new layout($this->database, $this->language);
+        $this->menu = new menu($this->database);
     }
 
     private function init_error_reporting(bool $error_reporting)
@@ -49,12 +55,6 @@ class admin
         // ini_set('display_errors', 1);
         // ini_set('error_reporting', E_ERROR | E_PARSE);
         // }
-    }
-
-    public function menu()
-    {
-        $menu = new menu();
-        return $menu->tree($this->database);
     }
 
     public function dispose()

@@ -52,6 +52,18 @@ class database
 
         return $return;
     }
+    
+    public function dictionary(string $sql, string $field): array
+    {
+        $return = [];
+        
+        $query = mysqli_query($this->connection, $sql);
+        while ($array = mysqli_fetch_assoc($query)) {
+            $return[] = $array[$field];
+        }
+        
+        return $return;
+    }
 
     public function item(string $sql)
     {
@@ -64,11 +76,32 @@ class database
         return mysqli_query($this->connection, $sql);
     }
 
-    public function unique(string $table, string $field, string $value): bool
+    public function unique(string $table, string $field, string $value, int $id = 0): bool
     {
-        $check = $this->item("SELECT 1 FROM `" . $table . "` WHERE `" . $field . "` = '" . $value . "' LIMIT 1");
+        $check = $this->item("SELECT 1 FROM `" . $table . "` WHERE `" . $field . "` = '" . $value . "' AND `id` != '" . $id . "' LIMIT 1");
         
         return empty($check);
+    }
+    
+    public function position(string $table, array $where, $field = "position"):int {
+        
+        $where_array = [];
+        
+        foreach($where as $key => $value)
+        {
+            if(is_null($value))
+            {
+                $where_array[] = "`" . $key . "` IS NULL";
+            }
+            else
+            {
+                $where_array[] = "`" . $key . "` = '" . $value . "'";
+            }
+        }
+        
+        $max_position = $this->item("SELECT MAX(`" . $field . "`) AS `max` FROM `" . $table . "` WHERE " . implode(' AND ', $where_array) . "");
+        
+        return intval($max_position["max"]) + 1;
     }
 
     public function dispose()

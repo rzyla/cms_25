@@ -1,10 +1,23 @@
-		</div>
-		
-        <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
-        <script src="<?php echo $provider->config->app_admin_path ?>vendor/admin-lte/js/adminlte.js"></script>
-        <script>
+
+</div>
+
+<?php  require_once 'partials/alert.inc.php'; ?>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
+	integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w="
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+	integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I="
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+	integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8="
+	crossorigin="anonymous"></script>
+<script
+	src="<?php echo $provider->config->app_path ?>vendor/admin-lte/js/adminlte.js"></script>
+<script>
             const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
             const Default = {
                 scrollbarTheme: "os-theme-light",
@@ -26,9 +39,16 @@
                     });
                 }
             });
-        </script> <!--end::OverlayScrollbars Configure--> <!-- OPTIONAL SCRIPTS --> <!-- sortablejs -->
-        <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" integrity="sha256-ipiJrswvAR4VAx/th+6zWsdeYmVae0iJuiR+6OqHJHQ=" crossorigin="anonymous"></script> <!-- sortablejs -->
-        <script>
+        </script>
+<!--end::OverlayScrollbars Configure-->
+<!-- OPTIONAL SCRIPTS -->
+<!-- sortablejs -->
+<script
+	src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
+	integrity="sha256-ipiJrswvAR4VAx/th+6zWsdeYmVae0iJuiR+6OqHJHQ="
+	crossorigin="anonymous"></script>
+<!-- sortablejs -->
+<script>
             const connectedSortables =
                 document.querySelectorAll(".connectedSortable");
             connectedSortables.forEach((connectedSortable) => {
@@ -44,9 +64,14 @@
             cardHeaders.forEach((cardHeader) => {
                 cardHeader.style.cursor = "move";
             });
-        </script> <!-- apexcharts -->
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js" integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8=" crossorigin="anonymous"></script> <!-- ChartJS -->
-        <script>
+        </script>
+<!-- apexcharts -->
+<script
+	src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
+	integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
+	crossorigin="anonymous"></script>
+<!-- ChartJS -->
+<script>
             // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
             // IT'S ALL JUST JUNK FOR DEMO
             // ++++++++++++++++++++++++++++++++++++++++++
@@ -102,10 +127,18 @@
                 sales_chart_options,
             );
             sales_chart.render();
-        </script> <!-- jsvectormap -->
-        <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js" integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js" integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY=" crossorigin="anonymous"></script> <!-- jsvectormap -->
-        <script>
+        </script>
+<!-- jsvectormap -->
+<script
+	src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
+	integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y="
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"
+	integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY="
+	crossorigin="anonymous"></script>
+<!-- jsvectormap -->
+<script>
             const visitorsData = {
                 US: 398, // USA
                 SA: 400, // Saudi Arabia
@@ -214,5 +247,9 @@
             );
             sparkline3.render();
         </script>
-    </body>
+<script
+	src="<?php echo $provider->config->app_path ?>assets/js/jquery.js"></script>
+<script
+	src="<?php echo $provider->config->app_path ?>assets/js/admin.js"></script>
+</body>
 </html>

@@ -4,7 +4,7 @@ class config
 {
 
     private string $path = "";
-    
+
     private string $app_path = "";
 
     private string $app_admin_path = "";
@@ -12,6 +12,8 @@ class config
     private string $app_url = "";
 
     private string $app_salt = "";
+
+    private string $app_token_time = "";
 
     private bool $error_reporting = false;
 
@@ -31,29 +33,38 @@ class config
 
     private string $default_language_admin = "";
 
+    private string $path_upload = "";
+
     public function __construct(string $path)
     {
         $this->path = $path;
-        
+        $this->path_upload = '/storage/upload/';
+
         $env_path = $this->get_env_path();
-        
-        if (! file_exists($env_path)) {
+
+        if (!file_exists($env_path))
+        {
             die("NO CONFIG FILE");
         }
 
-        if ($file = fopen($env_path, "r")) {
-            while (! feof($file)) {
+        if ($file = fopen($env_path, "r"))
+        {
+            while (!feof($file))
+            {
                 $line = fgets($file);
 
-                if (! empty($line)) {
+                if (!empty($line))
+                {
                     $explode = explode("=", $line);
 
-                    if (! empty($explode[1])) {
+                    if (!empty($explode[1]))
+                    {
 
                         $this->set_variable("APP_PATH", $this->app_path, $explode[0], $explode[1]);
                         $this->set_variable("APP_ADMIN_PATH", $this->app_admin_path, $explode[0], $explode[1]);
                         $this->set_variable("APP_URL", $this->app_url, $explode[0], $explode[1]);
                         $this->set_variable("APP_SALT", $this->app_salt, $explode[0], $explode[1]);
+                        $this->set_variable("APP_TOKEN_TIME", $this->app_token_time, $explode[0], $explode[1]);
                         $this->set_variable("ERROR_REPORTING", $this->error_reporting, $explode[0], $explode[1]);
                         $this->set_variable("DB_HOST", $this->db_host, $explode[0], $explode[1]);
                         $this->set_variable("DB_PORT", $this->db_port, $explode[0], $explode[1]);
@@ -70,22 +81,24 @@ class config
             fclose($file);
         }
     }
-    
+
     public function __get($key)
     {
-        if (isset($this->$key)) {
+        if (isset($this->$key))
+        {
             return $this->$key;
         }
     }
-    
+
     private function get_env_path()
     {
-        return $this->path  . ".env";
+        return $this->path . ".env";
     }
 
     private function set_variable(string $key, &$variable, string $explode_key, string $explode_variable)
     {
-        if ($key == $explode_key) {
+        if ($key == $explode_key)
+        {
             $variable = preg_replace('/\s+/', '', $explode_variable);
         }
     }

@@ -9,49 +9,94 @@ class route
         $this->path = $path; 
     }
     
-    public function route(string $path)
+    public function route(string $path) : string
     {
         return $this->path . $path;
     }
     
-    public function index(string $page)
+    public function index(string $page) : string
     {
-        return $this->path . $page;
+        return sprintf(consts::$path_list, $this->path, $page);
     }
     
-    public function add(string $page)
+    public function child(string $page, $id) : string
     {
-        return sprintf(consts::$path_add, $this->path, $page);
+        return sprintf(consts::$path_child, $this->path, $page, $id);
     }
     
-    public function insert(string $page)
+    public function add(string $page, ?int $id = 0) : string
     {
-        return sprintf(consts::$path_insert, $this->path, $page);
+        return sprintf(consts::$path_add, $this->path, $page, $id);
     }
     
-    public function edit(string $page, int $id)
+    public function insert(string $page, ?int $id = 0) : string
     {
-        return sprintf(consts::$path_edit, $this->path, $page, $id);
+        return sprintf(consts::$path_insert, $this->path, $page, $id);
     }
     
-    public function update(string $page, int $id)
+    public function edit(string $page, int $id, ?int $parent_id = null) : string
+    {
+        return !empty($parent_id) ? sprintf(consts::$path_child_edit, $this->path, $page, $parent_id, $id) : sprintf(consts::$path_edit, $this->path, $page, $id);
+    }
+    
+    public function update(string $page, int $id) : string
     {
         return sprintf(consts::$path_update, $this->path, $page, $id);
     }
     
-    public function delete(string $page, int $id)
+    public function save(string $page, int $id) : string
     {
-        return sprintf(consts::$path_delete, $this->path, $page, $id);
+        return sprintf(consts::$path_save, $this->path, $page, $id);
     }
     
-    public function activate(string $page, int $id)
+    public function delete(string $page, int $id, ?int $parent_id = null) : string
     {
-        return sprintf(consts::$path_activate, $this->path, $page, $id);
+        return !empty($parent_id) ? sprintf(consts::$path_child_delete, $this->path, $page, $parent_id, $id) :  sprintf(consts::$path_delete, $this->path, $page, $id);
     }
     
-    public function deactivate(string $page, int $id)
+    public function activate(string $page, int $id, ?int $parent_id = null) : string
     {
-        return sprintf(consts::$path_deactivate, $this->path, $page, $id);
+        return !empty($parent_id) ? sprintf(consts::$path_child_activate, $this->path, $page, $parent_id, $id) : sprintf(consts::$path_activate, $this->path, $page, $id);
+    }
+    
+    public function deactivate(string $page, int $id, ?int $parent_id = null) : string
+    {
+        return !empty($parent_id) ? sprintf(consts::$path_child_deactivate, $this->path, $page, $parent_id, $id) : sprintf(consts::$path_deactivate, $this->path, $page, $id);
+    }
+    
+    public function action(string $path, string $page, int $id) : string
+    {
+        return sprintf($path, $this->path, $page, $id);
+    }
+    
+    public function position(string $page, ?int $parent = null) : string
+    {
+        return !empty($parent) ? sprintf(consts::$path_child_position, $this->path, $page, $parent) : sprintf(consts::$path_position, $this->path, $page);
+    }    
+    
+    public function login() : string
+    {
+        return sprintf(consts::$path_login, $this->path);
+    }
+    
+    public function logout() : string
+    {
+        return sprintf(consts::$path_logout, $this->path);
+    }
+    
+    public function manage(string $page, int $id) : string
+    {
+        return sprintf(consts::$path_manage, $this->path, $page, $id);
+    }
+    
+    public function manage_submit(string $page, int $id) : string
+    {
+        return sprintf(consts::$path_manage_submit, $this->path, $page, $id);
+    }
+    
+    public function manage_delete(string $page, int $id, int $sub_id) : string
+    {
+        return sprintf(consts::$path_manage_delete, $this->path, $page, $id, $sub_id);
     }
     
     public function redirect(string $path = "")

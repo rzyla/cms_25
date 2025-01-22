@@ -1,6 +1,6 @@
 <?php
 
-function slug($text, string $divider = '-')
+function string_slug($text, string $divider = '-')
 {
     $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
     $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);

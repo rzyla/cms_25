@@ -1,5 +1,4 @@
-<?php 
-
-require_once 'views/admin/partials/grid.ind.php';
+<?php
+require_once 'views/admin/layout/default/partials/grid.ind.php';
 
 ?>
