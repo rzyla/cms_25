@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<link rel="shortcut icon" href="/assets/images/admin-favicon.ico" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
@@ -27,6 +27,10 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="/assets/css/<?php echo $provider->variables->provider ?>.css">
+	
+<?php foreach($provider->layout->include_in_header as $include): ?>
+	<?php echo $include; ?>
+<?php endforeach; ?>
 
 <title><?php echo $provider->language->translate("common_arteh_upper"); ?> <?php echo $provider->language->translate("common_cms_upper"); ?></title>
 </head>

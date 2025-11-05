@@ -21,9 +21,10 @@ return
     "common_cms_upper" => 'CMS',
     "common_all_right_reserved" => 'Wszelkie prawa zastrzeżone',
     
-    'sidebar_management' => 'Zarządzanie',
+    "sidebar_administration_upper" => 'ZARZĄDZANIE',
+    "sidebar_management" => 'Administracja',
     "sidebar_moules" => 'Moduły',
-    "sidebar_menu" => 'Menu',
+    "sidebar_menu" => 'Zarządzanie menu',
     "sidebar_partials" => 'Pojedyncze elementy',
     "sidebar_configuration" => 'Konfiguracja',
     "sidebar_users" => 'Użytkownicy',
@@ -31,6 +32,7 @@ return
     "sidebar_account" => 'Moje konto',
     "sidebar_logout" => 'Wyloguj',
     "sidebar_dashboard" => "Strona główna",
+    "sidebar_button_administration" => "ADMINISTRACJA",
     
     "container_fluid_dashboard" => "Strona główna",
     "container_fluid_contact" => "Kontakt",
@@ -60,6 +62,8 @@ return
     "module_meta_tags" => "Dane meta",
     "module_maintenance" => "Tryb konserwacji",
     "module_contact" => "Dane kontaktowe",
+    "module_slider" => "Slider",
+    "module_carousel" => "Karuzela",
     
     // ----------------------
     
@@ -68,6 +72,9 @@ return
     "page_login_placeholder_password" => "Hasło",
     "page_login_button_submit" => "Zaloguj",
     
+    
+    "page_configuration_edit_menu_header" => "Konfiguracja menu",
+    "page_configuration_edit_menu_home_page" => "Strona główna",
     "page_configuration_edit_modules_header" => "Domyślna konfiguracja modułów",
     "page_configuration_edit_form_header" => "Formularz kontaktowy",
     "page_configuration_edit_form_mail" => "Adres e-mail",
@@ -159,6 +166,14 @@ return
     "page_account_edit_created" => "Utworzono",
     "page_account_edit_modified" => "Zmodyfikowano",
     
+    "page_module_header_path" => "Ścieżka menu",
+    
+    //----------------------
+    "page_content_module_meta_tags_title" => "Tytuł strony",
+    "page_content_module_meta_tags_description" => "Opis strony",
+    "page_content_module_meta_tags_key_words" => "Słowa kluczowe",
+    "page_content_module_html_title" => "Tytuł strony",
+    "page_content_module_html_description" => "Opis strony",
     //----------------------
     
     "breadcrumb_account_edit" => "Moje konto",
@@ -179,6 +194,8 @@ return
     "breadcrumb_partials_add" => "Dodaj element",
     "breadcrumb_partials_edit" => "Edytuj element",
     "breadcrumb_contact_index" => "Kontakt",
+    "breadcrumb_content_edit" => "Edycja elementu",
+    "breadcrumb_content_error" => "Brak modułu",
     
     "title_account_edit" => "Moje konto",
     "title_dashboard_index" => "Strona głóna",
@@ -197,6 +214,8 @@ return
     "title_partials_add" => "Dodaj element",
     "title_partials_edit" => "Edytuj element",
     "title_contact_index" => "Kontakt",
+    "title_content_edit" => "Edycja elementu",
+    "title_partial_edit" => "Edycja pojedyczego elementu",
     
     "common_button_activate" => "Aktywuj",
     "common_button_deactivate" => "Deaktywuj",
@@ -204,6 +223,7 @@ return
     "common_button_delete" => "Usuń",
     "common_button_menu" => "Menu",
     "common_button_manage" => "Zarządzaj",
+    "common_button_update" => 'Aktualizuj',
     
     "dictionary_common_active_0" => 'Nieaktywny',
     "dictionary_common_active_1" => 'Aktywny',
@@ -218,13 +238,17 @@ return
     "dictionary_common_target_0" => 'To samo okno',
     "dictionary_common_target_1" => 'Nowe okno',
     "dictionary_common_module_static" => 'Statyczny',
-    "dictionary_common_module_dynamic" => 'Dynamiczny',
+    "dictionary_common_module_dynamic_single" => 'Pojedynczy',
+    "dictionary_common_module_dynamic_multi" => 'Mnogi',
+    "dictionary_common_module_partial" => 'Częściowy',
     
     "massage_activate" => "Pomyślnie aktywowano wpis",
     "massage_deactivate" => "Pomyślnie deaktywowano wpis",
     "massage_deleted" => "Pomyślnie usunięto wpis",
     "massage_positions" => "Pomyślnie zaktualizowano pozycje",
     "massage_configuration_modified" => "Pomyślnie zmodyfikowano konfigurację",
+    "massage_content_modified" => "Pomyślnie zmodyfikowano treść",
+    "massage_content_modified_error" => "Błąd podczas aktualizacji treści",
     "massage_menu_add_error" => "Błąd podczas dodawania menu",
     "massage_menu_added" => "Pomyślnie dodano menu",
     "massage_menu_modified" => "Pomyślnie zmodyfikowano menu",
@@ -239,6 +263,7 @@ return
     "massage_users_added" => "Pomyślnie dodano użytkownika",
     "massage_users_modified" => "Pomyślnie zmodyfikowano użytkownika",
     "massage_users_unique_login_error" => "Użytkownik o podamym loginie isnieje w bazie danych",
+    "massage_account_upload_error" => "Plik ze zdjęciem nie został poprawnie grany",
     "massage_partials_added" => "Pomyślnie dodano pojedynczy element",
     "massage_partials_add_error" => "Błąd podczas dodawania pojedynczego elementu",
     "massage_partials_edit_error" => "Błąd podczas edytowania pojedynczego elementu",
@@ -249,6 +274,7 @@ return
     "massage_security_access_error" => "Nie masz dostępu do wybranego elementu",
     "massage_login_error" => "Błędny login lub hasło",
     "massage_login_active_error" => "Konto jest nieaktywne",
+    "massage_content_no_module" => "Brak modułów dodanych do elementu menu",
     
     "alert_perform_this_action" => "Czy na pewno chcesz wykonać tą akcję?",
     "alert_title_delete_module" => "Usunięcie modułu: ",

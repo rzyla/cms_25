@@ -58,7 +58,16 @@
 					</div>
 				</div>
 				<div class="card-footer">
-					<?php require 'views/admin/layout/default/partials/add_edit_buttons.inc.php'; ?>
+					<a href="<?php echo $provider->buttons->back; ?>"
+						class="btn btn-secondary float-left item-icon-left"><i
+						class="bi bi-arrow-left"></i> <?php echo $provider->language->translate("common_submit_back"); ?></a>
+					<a href="<?php echo $provider->route->partial($provider->variables->id); ?>"
+						class="btn btn-dark float-left item-icon-left margin-left-20"><i
+						class="bi bi-gear"></i> <?php echo $provider->language->translate("common_button_update"); ?></a>
+					<button type="submit"
+						class="btn btn-primary float-right item-icon-left">
+						<i class="bi bi-floppy"></i> <?php echo $provider->language->translate("common_submit_save"); ?></button>
+					<div class="clear"></div>
 				</div>
 			</form>
 		</div>

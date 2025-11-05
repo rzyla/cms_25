@@ -5,7 +5,7 @@ if (array_key_exists(consts::$server_request_method, $_SERVER) && strtoupper($_S
     {
         $user = $provider->database->item("SELECT `id`, `password`, `active` FROM " . consts::$table_users . " WHERE `login` = '" . $_POST["login"] . "'");
 
-        if (array_key_exists("id", $user) && !empty($user["id"]) && array_key_exists("password", $user) && !empty($user["password"]))
+        if ($user != null && array_key_exists("id", $user) && !empty($user["id"]) && array_key_exists("password", $user) && !empty($user["password"]))
         {
             if($user['active'] != consts::$value_activate)
             {
@@ -26,7 +26,7 @@ if (array_key_exists(consts::$server_request_method, $_SERVER) && strtoupper($_S
 }
 else
 {
-    $provider->variables->init_view(null, consts::$page_login, consts::$action_login, consts::$layout_empty);
+    $provider->variables->set_view(null, consts::$page_login, consts::$action_login, consts::$layout_empty);
 }
 
 ?>

@@ -3,31 +3,35 @@
 class admin
 {
 
-    public $buttons;
+    public buttons $buttons;
 
-    public $config;
+    public config $config;
 
-    public $database;
+    public content $content;
 
-    public $dictionary;
+    public database $database;
 
-    public $grid;
+    public dictionary $dictionary;
 
-    public $language;
+    public files $files;
 
-    public $layout;
+    public grid $grid;
 
-    public $message;
+    public language $language;
 
-    public $route;
+    public layout $layout;
 
-    public $user;
+    public menu $menu;
 
-    public $variables;
+    public message $message;
 
-    public $security;
-    
-    public $menu;
+    public route $route;
+
+    public security $security;
+
+    public user $user;
+
+    public variables $variables;
 
     function __construct($path)
     {
@@ -45,8 +49,10 @@ class admin
         $this->buttons = new buttons($this->route, $this->variables);
         $this->grid = new grid();
         $this->dictionary = new dictionary($this->language, $this->database);
-        $this->layout = new layout($this->database, $this->language);
         $this->menu = new menu($this->database);
+        $this->layout = new layout($this->database, $this->language, $this->menu, $this->variables);
+        $this->files = new files($this->config);
+        $this->content = new content();
     }
 
     private function init_error_reporting(bool $error_reporting)

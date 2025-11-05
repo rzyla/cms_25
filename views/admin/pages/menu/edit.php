@@ -38,7 +38,7 @@
 						<label for="type" class="form-label"><?php echo $provider->language->translate("page_" . consts::$page_menu . "_edit_type"); ?></label>
 						<select class="form-select" name="type">
 							<?php foreach($provider->dictionary->menu() as $key => $value): ?>
-								<?php if($provider->variables->html_value(consts::$data_entity, 'parent_name') == "" && ($key == consts::$value_menu_content || $key == consts::$value_menu_url)) { continue; } ?>
+								<?php if($provider->variables->html_value(consts::$data_entity, 'parent_name') == "" && ($key != consts::$value_menu_parent)) { continue; } ?>
 								<?php if($provider->variables->html_value(consts::$data_entity, 'type') == $key): ?>
 									<option value="<?php echo $key; ?>" selected="selected"><?php echo $value; ?></option>
 								<?php else: ?>

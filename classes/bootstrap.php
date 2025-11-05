@@ -17,6 +17,10 @@ class bootstrap
                 require_once 'bootstrap/web.php';
             }
         }
+        else
+        {
+            require_once 'bootstrap/web.php';
+        }
     }
 }
 

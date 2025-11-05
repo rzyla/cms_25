@@ -42,6 +42,11 @@ class user
             }
         }
     }
+    
+    public function avatar(string $avatar)
+    {
+        $this->avatar = $avatar;
+    }
 }
 
 ?>

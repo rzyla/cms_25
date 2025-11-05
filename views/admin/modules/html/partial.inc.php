@@ -1,0 +1,1 @@
+<textarea class="form-control froala_editor" name="content[html][description]"><?php echo $partial->data('description'); ?></textarea>

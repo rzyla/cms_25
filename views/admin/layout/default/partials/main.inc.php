@@ -9,7 +9,7 @@
 				class="nav-link"><?php echo $provider->language->translate("container_fluid_dashboard"); ?></a>
 			</li>
 			<li class="nav-item d-none d-md-block"><a
-				href="<?php echo $provider->route->index(consts::$page_contact); ?>"
+				href="<?php echo $provider->route->module(consts::$module_contact); ?>"
 				class="nav-link"><?php echo $provider->language->translate("container_fluid_contact"); ?></a>
 			</li>
 		</ul>
@@ -21,24 +21,27 @@
 			</a></li>
 			<li class="nav-item dropdown user-menu"><a href="#"
 				class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> 
-				<?php if(empty($provider->user->avatar)): ?>
+				<?php if($provider->user->avatar == ''): ?>
 					<img src="/assets/images/avatars-default.jpg"
 					class="user-image rounded-circle"
 					alt="<?php echo $provider->user->name; ?>">
 				<?php else: ?>
-				
+					<img
+					src="<?php echo $provider->files->path([$provider->config->path_images, consts::$dir_avatars, $provider->user->avatar]); ?>"
+					class="user-image rounded-circle"
+					alt="<?php echo $provider->user->name; ?>">
 				<?php endif; ?>
 				 <span class="d-none d-md-inline"><?php echo $provider->user->name; ?></span>
 			</a>
 				<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
 					<li class="user-header text-bg-primary">
-					
-					<?php if(empty($provider->user->avatar)): ?>
+					<?php if($provider->user->avatar == ''): ?>
     					<img src="/assets/images/avatars-default.jpg"
-						class="rounded-circle"
-						alt="<?php echo $provider->user->name; ?>">
+						class="rounded-circle" alt="<?php echo $provider->user->name; ?>">
     				<?php else: ?>
-    				
+    					<img
+						src="<?php echo $provider->files->path([$provider->config->path_images, consts::$dir_avatars, $provider->user->avatar]); ?>"
+						class="rounded-circle" alt="<?php echo $provider->user->name; ?>">
     				<?php endif; ?>
 						<p>
 							<?php echo $provider->user->name; ?>
@@ -48,7 +51,7 @@
 						href="<?php echo $provider->route->index(consts::$page_account); ?>"
 						class="btn btn-default btn-flat"><?php echo $provider->language->translate("sidebar_account"); ?></a>
 						<a
-						href="<?php echo $provider->route->route(consts::$page_logout); ?>"
+						href="<?php echo $provider->route->route($provider->route->logout()); ?>"
 						class="btn btn-default btn-flat float-end"><?php echo $provider->language->translate("sidebar_logout"); ?></a></li>
 				</ul></li>
 		</ul>

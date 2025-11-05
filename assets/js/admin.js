@@ -62,10 +62,31 @@ $(document).ready(function() {
 			$('.jq-menu-link').show();
 		}
 	});
-	
-	$('.jq-closest-form-submit').on('click', function() {
+
+	$('.jq-closest-form-submit').on('click', function(e) {
+		e.preventDefault();
 		$(this).closest('form').submit();
 	});
+
+	$('.jq-delete-uploaded-file').on('click', function(e) {
+		e.preventDefault();
+		$(this).parent().parent().find('img').hide();
+		$(this).parent().parent().find('.jq-delete-file').val(true);
+		$(this).parent().parent().find('.jq-file').removeClass('display-none');
+		$(this).hide();
+	});
+	
+	$('.jq-submit-form').on('click', function(e) {
+		e.preventDefault();
+		$('.' + $(this).attr('data-form-class')).submit();
+	});
+	
+	$('.jq-menu-plus').on('click', function(e) {
+		e.preventDefault();
+		$('.jq-menu-' + $(this).attr('data-id')).toggleClass('display-none');
+		$('.jq-menu-root-' + $(this).attr('data-id')).toggleClass('expand');
+	});
+		
 
 	//$('#alert-box .jq-alert-submit').click(function(e)
 	//{

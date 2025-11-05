@@ -4,26 +4,76 @@ $provider->security->accessToPage(consts::$value_acl_user, consts::$page_dashboa
 
 if ($provider->variables->action != consts::$action_update && $provider->variables->action != consts::$action_edit)
 {
-    $provider->variables->init_action(consts::$action_edit);
-    $provider->variables->init_view();
+    $provider->variables->set_action(consts::$action_edit);
 }
 
 if ($provider->variables->action == consts::$action_update)
 {
-    if(!empty($_FILES))
+    if ($provider->variables->post('avatar_delete') != "")
     {
-        //$file_to_delete = url_upload() . consts::$dir_avatars. '/' . $provider->user->avatar;
-        //$file_to_upload = url_upload() . consts::$dir_avatars. '/' . $provider->user->avatar;
+        $provider->files->delete($provider->files->path([ 
+            $provider->config->path_upload,
+            consts::$dir_avatars,
+            $provider->user->avatar
+        ]));
+        $provider->files->delete($provider->files->path([ 
+            $provider->config->path_upload_images,
+            consts::$dir_avatars,
+            $provider->user->avatar
+        ]));
         
-        if(file_exists($file_to_delete))
-        {
-            unlink($file_to_delete);
-        }
-        
-        move_uploaded_file($_FILES["file"]["tmp_name"], "../files/gallery/$nazwapliku");
+        $provider->user->avatar('');
     }
-    
-    $provider->database->query("UPDATE " . $provider->database->table . " SET `name` = '" . $provider->variables->post('name') . "', `modified` = current_timestamp() WHERE `id` = '" . $provider->user->id . "'");
+
+    if (array_key_exists("avatar", $_FILES) && !empty($_FILES["avatar"]["name"]))
+    {      
+        $upload_error = false;
+
+        $provider->files->delete($provider->files->path([ 
+            $provider->config->path_upload,
+            consts::$dir_avatars,
+            $provider->user->avatar
+        ]));
+        $provider->files->delete($provider->files->path([ 
+            $provider->config->path_upload_images,
+            consts::$dir_avatars,
+            $provider->user->avatar
+        ]));
+
+        $upload_file_name = $provider->files->name($_FILES["avatar"]["name"]);
+
+        if (empty($upload_file_name))
+        {
+            $provider->message->message($provider->language->translate("massage_account_upload_error"), false);
+            $provider->route->redirect($provider->route->index(consts::$page_account));
+        }
+
+        $upload_path = $provider->files->path([ 
+            $provider->config->path_upload,
+            consts::$dir_avatars,
+            $upload_file_name
+        ]);
+
+        if ($provider->files->upload($_FILES["avatar"]["tmp_name"], $upload_path))
+        {
+            $images_path = $provider->files->path([ 
+                $provider->config->path_upload_images,
+                consts::$dir_avatars,
+                $upload_file_name
+            ]);
+
+            files_resize($upload_path, $images_path, 200, 200);
+        }
+        else
+        {
+            $provider->message->message($provider->language->translate("massage_account_upload_error"), false);
+            $provider->route->redirect($provider->route->index(consts::$page_account));
+        }
+
+        $provider->user->avatar($upload_file_name);
+    }
+
+    $provider->database->query("UPDATE " . $provider->database->table . " SET `name` = '" . $provider->variables->post('name') . "', `avatar` = '" . $provider->user->avatar . "', `modified` = current_timestamp() WHERE `id` = '" . $provider->user->id . "'");
     if ($provider->variables->post('password') != "")
     {
         $provider->database->query("UPDATE " . $provider->database->table . " SET `password` = '" . $provider->variables->password($provider->variables->post('password')) . "' WHERE `id` = '" . $provider->user->id . "'");

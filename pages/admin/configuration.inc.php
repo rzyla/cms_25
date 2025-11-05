@@ -4,8 +4,7 @@ $provider->security->accessToPage(consts::$value_acl_admin, consts::$page_dashbo
 
 if ($provider->variables->action != consts::$action_update && $provider->variables->action != consts::$action_edit)
 {
-    $provider->variables->init_action(consts::$action_edit);
-    $provider->variables->init_view();
+    $provider->variables->set_action(consts::$action_edit);
 }
 
 if ($provider->variables->action == consts::$action_edit)
@@ -23,7 +22,7 @@ if ($provider->variables->action == consts::$action_edit)
         $entity = [ ];
         $entity_list = $provider->database->list("SELECT `key`, `value` FROM " . $provider->database->table . " WHERE `module_file` = '" . $module["file"] . "' ");
 
-        $view = sprintf(consts::$path_module_configuration, $this->provider, $module["file"]);
+        $view = sprintf(consts::$path_module_view_configuration_default, $this->provider, $module["file"]);
 
         foreach($entity_list as $value)
         {
@@ -33,11 +32,18 @@ if ($provider->variables->action == consts::$action_edit)
         $modules[] = new module($module["id"], $module["file"], $view, $entity);
     }
 
+    $menu_selected = $provider->database->item("SELECT `value` FROM " . $provider->database->table . " WHERE `key` = '" . consts::$value_configuration_default_menu . "' ");
+
     $provider->variables->data(consts::$data_modules, $modules);
+    $provider->variables->data(consts::$data_menu, $provider->menu->tree());
+    $provider->variables->data(consts::$data_menu_selected, $menu_selected);
 }
 
 if ($provider->variables->action == consts::$action_update)
 {
+    $provider->database->query("DELETE FROM " . $provider->database->table . " WHERE `key` = '" . consts::$value_configuration_default_menu . "'");
+    $provider->database->query("INSERT INTO " . $provider->database->table . "(`key`, `value`, `created`) VALUES ('" . consts::$value_configuration_default_menu . "', '" . $provider->variables->post(consts::$value_configuration_default_menu) . "', current_timestamp())");
+
     if (!empty($provider->variables->post('configuration')))
     {
         foreach($provider->variables->post('configuration') as $file => $configuration)

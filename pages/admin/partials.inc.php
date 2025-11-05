@@ -11,8 +11,6 @@ if ($provider->variables->action == consts::$action_index)
         $provider->grid->actions->edit();
     }
 
-    // TODO: Zarządzaj
-
     $provider->grid->fields([ 
         "name",
         "module_translate",
@@ -28,6 +26,12 @@ if ($provider->variables->action == consts::$action_index)
         $provider->language->translate("page_partials_header_modified")
     ]);
     $provider->grid->items($provider->database->list("SELECT `p`.`id`, `p`.`name`, `m`.`file` as `module_translate`, `p`.`symbol`, `p`.`created`, `p`.`modified` FROM " . $provider->database->table . " p JOIN " . consts::$table_modules . " m ON p.module_id = m.id ORDER BY p.name ASC"));
+    
+    foreach($provider->grid->items as $key => $item)
+    {
+        $provider->grid->actions->custom($item['id'], new grid_actions_custom_item($provider->route->partial($item['id']), $provider->language->translate("common_button_update"), 'bi-arrow-repeat'));
+    }
+    
     $provider->grid->translate_from_dictionary("module_translate", $provider->dictionary->modules());
     $provider->layout->breadcrumb->add($provider->config->app_admin_path, $provider->language->translate("breadcrumb_home"));
     $provider->layout->breadcrumb->add(null, $provider->language->translate("breadcrumb_" . consts::$table_partials . "_index"));
@@ -79,7 +83,7 @@ if ($provider->variables->action == consts::$action_add)
     $provider->layout->title($provider->language->translate("title_" . consts::$table_partials . "_add"));
 
     $modules = [ ];
-    $modules_list = $provider->database->list("SELECT `id`, `file` FROM " . consts::$table_modules . " WHERE active = ' " . consts::$value_activate . " ' ORDER BY `" . consts::$fields_position . "` ASC");
+    $modules_list = $provider->database->list("SELECT `id`, `file` FROM " . consts::$table_modules . " WHERE active = '" . consts::$value_activate . "' AND (type = '" . consts::$value_module_type_dynamic_multi . "' OR type = '" . consts::$value_module_type_partial . "')  ORDER BY `" . consts::$fields_position . "` ASC");
 
     foreach($modules_list as $module)
     {

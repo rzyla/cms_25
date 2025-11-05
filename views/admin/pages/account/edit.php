@@ -32,9 +32,27 @@
 					<div>
 						<label for="active" class="form-label"><?php echo $provider->language->translate("page_" . consts::$page_account . "_edit_avatar"); ?></label>
 					</div>
-					<div class="input-group mb-3">
+					
+					<?php if($provider->user->avatar == ''): ?>
+						<div class="input-group mb-3">
 						<input type="file" class="form-control" id="avatar" name="avatar">
 					</div>
+					<?php else: ?>
+						<div class="mb-3">
+						<img class="mb-3"
+							src="<?php echo $provider->files->path([$provider->config->path_images, consts::$dir_avatars, $provider->user->avatar]); ?>"
+							alt="" /> <input type="file" class="form-control display-none jq-file"
+							id="avatar" name="avatar"> <input type="hidden"
+							name="avatar_delete" value="" class="jq-delete-file" />
+						<div>
+							<button type="button"
+								class="item-icon-left item-icon btn btn-danger btn-sm jq-delete-uploaded-file">
+								<i class="bi bi-trash"></i> <?php echo $provider->language->translate('common_button_delete'); ?></a>
+							</button>
+						</div>
+					</div>
+					<?php endif; ?>
+					
 
 					<div class="mb-3">
 						<label for="active" class="form-label"><?php echo $provider->language->translate("page_" . consts::$page_account . "_edit_active"); ?></label>

@@ -34,11 +34,20 @@ class config
     private string $default_language_admin = "";
 
     private string $path_upload = "";
+    
+    private string $path_upload_images = "";
+
+    private string $path_images = "";
+
+    private string $path_document_root = "";
 
     public function __construct(string $path)
     {
         $this->path = $path;
-        $this->path_upload = '/storage/upload/';
+        $this->path_document_root = $_SERVER['DOCUMENT_ROOT'];
+        $this->path_upload = $this->path_document_root . DIRECTORY_SEPARATOR . 'storage' . DIRECTORY_SEPARATOR . 'upload';
+        $this->path_upload_images = $this->path_document_root . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'images';
+        $this->path_images = DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'images';
 
         $env_path = $this->get_env_path();
 

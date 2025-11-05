@@ -1,4 +1,5 @@
-		<div class="row">
+<?php 
+/* <div class="row">
 				<!--begin::Col-->
 				<div class="col-lg-3 col-6">
 					<!--begin::Small Box Widget 1-->
@@ -329,3 +330,6 @@
 				<!-- /.Start col -->
 			</div>
 			<!-- /.row (main row) -->
+			
+*/
+?>
