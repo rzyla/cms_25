@@ -2,7 +2,7 @@
 	<div class="col-12">
 		<div class="card">
 			<form action="<?php echo $provider->content->form_content_url; ?>"
-				method="post">
+				method="post" class="jq-quilljs-editor--form">
 				<?php echo html_token($provider->security->token); ?>
 				<div class="card-body">
 					<?php

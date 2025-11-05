@@ -251,10 +251,13 @@
 	src="<?php echo $provider->config->app_path ?>assets/js/jquery.js"></script>
 <script
 	src="<?php echo $provider->config->app_path ?>assets/js/admin.js"></script>
-	
+
 <?php foreach($provider->layout->include_in_footer as $include): ?>
 	<?php echo $include; ?>
 <?php endforeach; ?>
-	
+
+<script
+	src="<?php echo $provider->config->app_path ?>assets/js/quill.js"></script>
+
 </body>
 </html>

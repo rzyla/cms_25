@@ -126,4 +126,8 @@ $provider->layout->include_in_footer("<script>
     })()
   </script>");
 
+
+$provider->layout->include_in_header('<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">');
+$provider->layout->include_in_footer('<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>');
+
 ?>

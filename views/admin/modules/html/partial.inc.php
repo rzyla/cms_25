@@ -1,1 +1,6 @@
-<textarea class="form-control froala_editor" name="content[html][description]"><?php echo $partial->data('description'); ?></textarea>
+<div class="jq-quilljs-editor--container">
+    <div class="jq-quilljs-editor--editor">
+      <?php echo $partial->data('description'); ?>
+    </div>
+    <textarea class="jq-quilljs-editor--content display-none" name="content[html][description]"></textarea>
+</div>
